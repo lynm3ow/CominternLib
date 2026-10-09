@@ -6,8 +6,6 @@
     }
     window.__M2M_HOMEPAGE_JS = true;
 
-    // ASCII + \u escapes so phrases stay correct even if the JS file
-    // is decoded with a non-UTF-8 charset after SPA navigation.
     var PHRASES = [
         "Workers of the world, unite!",
         "Proletarier aller L\u00e4nder, vereinigt euch!",
@@ -143,6 +141,11 @@
     function onDocumentClick(event) {
         var target = event.target;
         if (!target || !target.closest) {
+            return;
+        }
+        var dismissPatchNotes = target.closest('[data-close-patch-notes]');
+        if (dismissPatchNotes) {
+            dismissPatchNotes.closest('.patch-notes-popup').hidden = true;
             return;
         }
         if (target.closest('[data-close-panel]')) {

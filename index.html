@@ -5,6 +5,55 @@
 <link href="style.css" rel="stylesheet"/>
 <link href="music-player.css" rel="stylesheet"/>
 <style>
+.patch-notes-popup {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  z-index: 30;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  width: min(360px, calc(100vw - 32px));
+  box-sizing: border-box;
+  padding: 20px;
+  background: var(--chrome-muted);
+  color: var(--text-color);
+  border: 1px solid var(--chrome-border);
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+.patch-notes-popup[hidden] { display: none; }
+.patch-notes-popup__content { flex: 1; min-width: 0; }
+.patch-notes-popup__heading {
+  margin: 0 0 10px;
+  padding: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  opacity: 0.75;
+}
+.patch-notes-popup__title {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+.patch-notes-popup p { margin: 0; font-size: 0.9rem; line-height: 1.6; }
+.patch-notes-popup__close:hover { opacity: 0.65; }
+.patch-notes-popup__close:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.patch-notes-popup__close {
+  flex-shrink: 0;
+  padding: 0 4px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 20px;
+  cursor: pointer;
+}
+
 .featured-banner {
   display: inline-flex;
   flex-wrap: nowrap;
@@ -379,6 +428,13 @@ body.homepage.category-open {
 <title>The Comintern Library</title>
 </head>
 <body class="dark-theme homepage">
+<aside class="patch-notes-popup" aria-label="Latest patch notes">
+<div class="patch-notes-popup__content">
+<h2 class="patch-notes-popup__heading">Latest Update - October 9, 2026</h2>
+<strong class="patch-notes-popup__title">Mao Zedong archive added</strong>
+</div>
+<button type="button" class="patch-notes-popup__close" data-close-patch-notes aria-label="Dismiss patch notes">&times;</button>
+</aside>
 <nav class="m2m-top-nav m2m-top-nav--theme-only" aria-label="Site">
 <div class="theme-toggle-container">
 <input class="theme-toggle-checkbox" id="theme-toggle" type="checkbox"/>
@@ -448,7 +504,7 @@ body.homepage.category-open {
 <p>
 <b>
 <font size="-1">
-This may no longer be updated. Owner is @engel.zerstorung on instagram.<br/>
+Owner is @engel.zerstorung on instagram.<br/>
 </font>
 </b>
 </p>
@@ -460,7 +516,7 @@ This may no longer be updated. Owner is @engel.zerstorung on instagram.<br/>
 <div class="category-panel" id="panel-original" role="dialog" aria-modal="true" aria-labelledby="panel-original-title" hidden>
 <div class="category-panel__header">
 <h2 class="category-panel__title" id="panel-original-title">Original Marxists</h2>
-<button type="button" class="category-panel__close" data-close-panel>Close</button>
+<button type="button" class="category-panel__close" data-close-panel>X</button>
 </div>
 <ul>
 <li><a href="M&amp;E/Index.html">Marx &amp; Engels</a></li>
@@ -472,7 +528,7 @@ This may no longer be updated. Owner is @engel.zerstorung on instagram.<br/>
 <div class="category-panel" id="panel-bolsheviks" role="dialog" aria-modal="true" aria-labelledby="panel-bolsheviks-title" hidden>
 <div class="category-panel__header">
 <h2 class="category-panel__title" id="panel-bolsheviks-title">Old Bolsheviks</h2>
-<button type="button" class="category-panel__close" data-close-panel>Close</button>
+<button type="button" class="category-panel__close" data-close-panel>X</button>
 </div>
 <ul>
 <li><a href="Lenin/Index.html">Lenin</a></li>
@@ -485,10 +541,11 @@ This may no longer be updated. Owner is @engel.zerstorung on instagram.<br/>
 <div class="category-panel" id="panel-state-builders" role="dialog" aria-modal="true" aria-labelledby="panel-state-builders-title" hidden>
 <div class="category-panel__header">
 <h2 class="category-panel__title" id="panel-state-builders-title">Marxist-Leninists</h2>
-<button type="button" class="category-panel__close" data-close-panel>Close</button>
+<button type="button" class="category-panel__close" data-close-panel>X</button>
 </div>
 <ul>
   <li><a href="Stalin/Index.html">Stalin</a></li>
+<li><a href="Mao/Index.html">Mao</a></li>
 <li><a href="HoChiMinh/Index.html">Ho Chi Minh</a></li>
 <li><a href="Che/Index.html">Guevara</a></li>
 <li><a href="Honecker/Index.html">Honecker</a></li>
@@ -500,7 +557,7 @@ This may no longer be updated. Owner is @engel.zerstorung on instagram.<br/>
 <div class="category-panel" id="panel-italian-left" role="dialog" aria-modal="true" aria-labelledby="panel-italian-left-title" hidden>
 <div class="category-panel__header">
 <h2 class="category-panel__title" id="panel-italian-left-title">Italian Left-Communists</h2>
-<button type="button" class="category-panel__close" data-close-panel>Close</button>
+<button type="button" class="category-panel__close" data-close-panel>X</button>
 </div>
 <ul>
 <li><a href="Bordiga/Index.html">Bordiga</a></li>
@@ -511,7 +568,7 @@ This may no longer be updated. Owner is @engel.zerstorung on instagram.<br/>
 <div class="category-panel" id="panel-dutch-german-left" role="dialog" aria-modal="true" aria-labelledby="panel-dutch-german-left-title" hidden>
 <div class="category-panel__header">
 <h2 class="category-panel__title" id="panel-dutch-german-left-title">Councilists</h2>
-<button type="button" class="category-panel__close" data-close-panel>Close</button>
+<button type="button" class="category-panel__close" data-close-panel>X</button>
 </div>
 <ul>
 <li><a href="Pannekoek/Index.html">Pannekoek</a></li>
