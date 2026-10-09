@@ -17,12 +17,13 @@
   width: min(360px, calc(100vw - 32px));
   box-sizing: border-box;
   padding: 20px;
-  background: var(--chrome-muted);
+  background: #e5e5e5;
   color: var(--text-color);
   border: 1px solid var(--chrome-border);
   border-radius: 4px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
+body.dark-theme .patch-notes-popup { background: #333333; }
 .patch-notes-popup[hidden] { display: none; }
 .patch-notes-popup__content { flex: 1; min-width: 0; }
 .patch-notes-popup__heading {
