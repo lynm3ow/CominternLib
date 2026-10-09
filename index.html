@@ -1,6 +1,7 @@
 <html lang="en">
 <head><script src="theme-early.js"></script>
 <meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 <link href="favicon.ico" rel="icon" type="image/x-icon"/>
 <link href="style.css" rel="stylesheet"/>
 <link href="music-player.css" rel="stylesheet"/>
@@ -52,6 +53,39 @@
   font: inherit;
   font-size: 20px;
   cursor: pointer;
+}
+
+@keyframes patch-notes-slide-up {
+  from { transform: translateY(calc(100% + 24px)); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@media (max-width: 768px) {
+  .patch-notes-popup {
+    left: max(12px, env(safe-area-inset-left));
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
+    z-index: 1002;
+    width: auto;
+    padding: 12px 12px 12px 16px;
+    gap: 8px;
+    border-radius: 14px;
+    animation: patch-notes-slide-up 300ms ease-out both;
+  }
+  .patch-notes-popup__heading { margin-bottom: 4px; font-size: 0.7rem; }
+  .patch-notes-popup__title { margin-bottom: 0; font-size: 1rem; }
+  .patch-notes-popup__close {
+    display: grid;
+    place-items: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0;
+    border-radius: 8px;
+    font-size: 24px;
+    touch-action: manipulation;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .patch-notes-popup { animation: none; }
 }
 
 .featured-banner {
