@@ -14,7 +14,6 @@
                 window.removeEventListener('scroll', topNavScrollHandler);
                 window.removeEventListener('resize', topNavResizeHandler);
                 if (window.visualViewport) {
-                    window.visualViewport.removeEventListener('scroll', topNavScrollHandler);
                     window.visualViewport.removeEventListener('resize', topNavResizeHandler);
                 }
                 topNavBound = false;
@@ -28,7 +27,6 @@
             window.removeEventListener('scroll', topNavScrollHandler);
             window.removeEventListener('resize', topNavResizeHandler);
             if (window.visualViewport) {
-                window.visualViewport.removeEventListener('scroll', topNavScrollHandler);
                 window.visualViewport.removeEventListener('resize', topNavResizeHandler);
             }
         }
@@ -51,9 +49,7 @@
             if (wasHidden) {
                 nav.classList.add('m2m-top-nav--scroll-hidden');
             }
-            if (!collapsed) {
-                document.documentElement.style.setProperty('--m2m-top-nav-pad', navH + 'px');
-            }
+            document.documentElement.style.setProperty('--m2m-top-nav-pad', navH + 'px');
         }
 
         function setCollapsed(c) {
@@ -63,10 +59,8 @@
             collapsed = c;
             if (c) {
                 nav.classList.add('m2m-top-nav--scroll-hidden');
-                document.documentElement.style.setProperty('--m2m-top-nav-pad', '0px');
             } else {
                 nav.classList.remove('m2m-top-nav--scroll-hidden');
-                document.documentElement.style.setProperty('--m2m-top-nav-pad', navH + 'px');
             }
         }
 
@@ -100,9 +94,6 @@
 
         function onResize() {
             measureNavHeight();
-            if (!collapsed) {
-                document.documentElement.style.setProperty('--m2m-top-nav-pad', navH + 'px');
-            }
         }
 
         measureNavHeight();
@@ -111,7 +102,6 @@
         window.addEventListener('scroll', topNavScrollHandler, { passive: true });
         window.addEventListener('resize', topNavResizeHandler);
         if (window.visualViewport) {
-            window.visualViewport.addEventListener('scroll', topNavScrollHandler, { passive: true });
             window.visualViewport.addEventListener('resize', topNavResizeHandler);
         }
         topNavBound = true;

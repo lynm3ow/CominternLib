@@ -217,6 +217,19 @@ body.homepage.category-open {
     --orbit-fit: min(96cqw, 96cqh);
   }
 }
+@media (min-width: 769px) {
+  .homepage-main {
+    margin-top: 16px;
+  }
+  .homepage-orbit {
+    --orbit-fit: min(998px, 115.2vw, calc(1.2 * (100svh - var(--m2m-top-nav-pad, 52px) - clamp(72px, 10vh, 96px) - 11rem)));
+  }
+  @supports (width: 1cqh) {
+    .homepage-orbit {
+      --orbit-fit: min(998px, 115.2cqw, 115.2cqh);
+    }
+  }
+}
 .homepage-orbit__center {
   position: absolute;
   top: 50%;
@@ -355,7 +368,15 @@ body.homepage.category-open {
 }
 @media (max-width: 768px) {
   body.homepage {
-    overflow: auto;
+    overflow: visible;
+  }
+  .homepage-banner {
+    display: flex;
+    justify-content: center;
+  }
+  .homepage-banner .featured-banner {
+    width: min(720px, 100%);
+    max-width: 100%;
   }
   .homepage-viewport {
     height: auto;
@@ -465,12 +486,15 @@ body.homepage.category-open {
 <body class="dark-theme homepage">
 <aside class="patch-notes-popup" aria-label="Latest patch notes">
 <div class="patch-notes-popup__content">
-<h2 class="patch-notes-popup__heading">News - November 10, 2026</h2>
-<strong class="patch-notes-popup__title">Remember the brave proletarians of the Edmund Fitzgerald. 11.10.1975, 7:15 PM EST.</strong>
+<h2 class="patch-notes-popup__heading">Large Update - 11.11.2026</h2>
+<strong class="patch-notes-popup__title">Finally fixed the mobile scrolling bug! Made update history public.</strong>
 </div>
 <button type="button" class="patch-notes-popup__close" data-close-patch-notes aria-label="Dismiss patch notes">&times;</button>
 </aside>
-<nav class="m2m-top-nav m2m-top-nav--theme-only" aria-label="Site">
+<nav class="m2m-top-nav" aria-label="Site">
+<div class="home-anchor-slot">
+<a class="home-button" href="updates.html">Updates</a>
+</div>
 <div class="theme-toggle-container">
 <input class="theme-toggle-checkbox" id="theme-toggle" type="checkbox"/>
 <label class="theme-toggle-label" for="theme-toggle">
