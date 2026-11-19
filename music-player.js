@@ -78,7 +78,6 @@
     var root = document.createElement('div');
     root.className = 'm2m-music-player' + (state.collapsed ? ' m2m-music-player--collapsed' : '');
     root.setAttribute('role', 'region');
-    root.setAttribute('aria-label', 'Synthwave Radio, site music');
 
     root.innerHTML =
         '<button type="button" class="m2m-music-player__peek" aria-label="Expand music player" title="Show player">' +
@@ -86,7 +85,7 @@
         '<path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
         '</svg></button>' +
         '<div class="m2m-music-player__panel">' +
-        '<p class="m2m-music-player__title">Synthwave Radio</p>' +
+        '<p class="m2m-music-player__title">Radio</p>' +
         '<button type="button" class="m2m-music-player__minimize" aria-label="Minimize music player" title="Hide player">' +
         '<svg class="m2m-music-player__icon-min" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
         '<path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
