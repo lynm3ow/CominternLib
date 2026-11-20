@@ -300,7 +300,7 @@
         var scripts = bodyEl.querySelectorAll('script[src]');
         for (var i = scripts.length - 1; i >= 0; i--) {
             var src = scripts[i].getAttribute('src') || '';
-            if (/music-player\.js|theme\.js|homepage\.js|site-nav\.js/i.test(src)) {
+            if (/theme\.js|homepage\.js|site-nav\.js/i.test(src)) {
                 scripts[i].parentNode.removeChild(scripts[i]);
             }
         }
